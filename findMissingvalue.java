@@ -3,9 +3,9 @@ public class findMissingvalue
 {
     public static void main(String[] args) {
         int[] arr = {1,2,3,4,5,7};
-        Scanner obj = new Scanner(System.in);;
+        Scanner s = new Scanner(System.in);;
         System.out.println("enter the number to find");
-        int x = obj.nextInt();
+        int x = s.nextInt();
 
 
         for(int i=0; i<arr.length; i++)
