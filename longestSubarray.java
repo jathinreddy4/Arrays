@@ -32,7 +32,7 @@ public class longestSubarray
     }
 } 
 */
-
+//optimal solution 1 (time complexity O(n^2))
 public static int longsub(int arr[], int n)
     {
         int len = 0;
