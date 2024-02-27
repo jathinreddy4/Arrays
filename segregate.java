@@ -1,4 +1,6 @@
-public class rearrangeBySign 
+//segrate positive and negative elements
+
+public class segregate 
 {
     public static void main(String[] args) 
     {
@@ -33,13 +35,6 @@ public class rearrangeBySign
             System.out.print(i + " ");    
         }
 
-        for(int i=0;i<arr.length/2;i++)
-        {
-      
-            arr[2*i] = pos[i];
-            arr[2*i+1] = neg[i];
-            
-        }
 
        
 
