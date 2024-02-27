@@ -1,37 +1,44 @@
-
-
-
 import java.util.*;
 
-public class tUf {
-    public static int majorityElement(int []v) {
-        //size of the given array:
-        int n = v.length;
+class TUF{
 
-        for (int i = 0; i < n; i++) {
-            //selected element is v[i]
-            int cnt = 0;
-            for (int j = 0; j < n; j++) {
-                // counting the frequency of v[i]
-                if (v[j] == v[i]) {
-                    cnt++;
-                }
-            }
+public static int[] RearrangebySign(int[] A, int n){
+    
+  // Define 2 vectors, one for storing positive 
+  // and other for negative elements of the array.
+  ArrayList<Integer> pos=new ArrayList<>();
+  ArrayList<Integer> neg=new ArrayList<>();
+  
+  // Segregate the array into positives and negatives.
+  for(int i=0;i<n;i++){
+      
+      if(A[i]>0) pos.add(A[i]);
+      else neg.add(A[i]);
+  }
+  
+  // Positives on even indices, negatives on odd.
+  for(int i=0;i<n/2;i++){
+      
+      A[2*i] = pos.get(i);
+      A[2*i+1] = neg.get(i);
+  }
 
-            // check if frquency is greater than n/2:
-            if (cnt > (n / 2))
-                return v[i];
-        }
+ 
+  return A;
+}    
 
-        return -1;
-    }
+public static void main(String args[]) 
+{
+  // Array Initialisation.
+  int n = 4;
+  int A[]= {1,2,-4,-5};
 
-    public static void main(String args[]) {
-        int[] arr = {2, 2, 1, 1, 1, 2, 2};
-        int ans = majorityElement(arr);
-        System.out.println("The majority element is: " + ans);
 
-    }
+  int[]ans= RearrangebySign(A,n);
+  
+  for (int i = 0; i < n; i++) {
+    System.out.print(ans[i]+" ");
+  }
 
-} 
-
+}
+}
