@@ -1,43 +1,46 @@
+
+
+
 import java.util.*;
 
 class TUF{
 
-public static int[] RearrangebySign(int[] A, int n){
+public static ArrayList<Integer> 
+                     printLeadersBruteForce(int[] arr, int n){
     
-  // Define 2 vectors, one for storing positive 
-  // and other for negative elements of the array.
-  ArrayList<Integer> pos=new ArrayList<>();
-  ArrayList<Integer> neg=new ArrayList<>();
+  ArrayList<Integer> ans= new ArrayList<>();
   
-  // Segregate the array into positives and negatives.
-  for(int i=0;i<n;i++){
-      
-      if(A[i]>0) pos.add(A[i]);
-      else neg.add(A[i]);
-  }
-  
-  // Positives on even indices, negatives on odd.
-  for(int i=0;i<n/2;i++){
-      
-      A[2*i] = pos.get(i);
-      A[2*i+1] = neg.get(i);
-  }
+   // Last element of an array is always a leader,
+   // push into ans array.
+   int max = arr[n - 1];
 
- 
-  return A;
-}    
+    ans.add(arr[n-1]);
+    
+    // Start checking from the end whether a number is greater
+    // than max no. from right, hence leader.
+    for (int i = n - 2; i >= 0; i--)
+      if (arr[i] > max) {
+        ans.add(arr[i]);
+        max = arr[i];
+      }
+
+  return ans;
+   
+}
 
 public static void main(String args[]) 
 {
-  // Array Initialisation.
-  int n = 4;
-  int A[]= {1,2,-4,-5};
+  // Array Initialization.
+  int n = 6;
+  int arr[]=  {10, 22, 12, 3, 0, 6};
 
 
-  int[]ans= RearrangebySign(A,n);
+  ArrayList<Integer> ans= printLeadersBruteForce(arr,n);
   
-  for (int i = 0; i < n; i++) {
-    System.out.print(ans[i]+" ");
+  Collections.sort(ans, Collections.reverseOrder());
+  
+  for (int i = 0; i < ans.size(); i++) {
+    System.out.print(ans.get(i)+" ");
   }
 
 }
