@@ -37,6 +37,8 @@ public class rotateMatrix
             System.out.println();
         }
         
+        //here we tried to rotated the 90 degree roatated mat again by 90 to roatate it by 180 but failed,
+        // will try again.
         
         int k = ans.length;
         int answ[][] = new int[k][k];
