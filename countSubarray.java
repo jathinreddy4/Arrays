@@ -1,3 +1,5 @@
+//need the optimal solution using hashset 
+// need to learn that first
 public class countSubarray 
 {
     public static void main(String[] args) 
