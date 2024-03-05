@@ -4,31 +4,43 @@
 import java.util.*;
 
 public class tUf {
-    public static int getLongestSubarray(int []a, long k) {
-        int n = a.length; // size of the array.
+    public static List<Integer> majorityElement(int []v) {
+        int n = v.length; //size of the array
+        List<Integer> ls = new ArrayList<>(); // list of answers
 
-        int len = 0;
-        for (int i = 0; i < n; i++) { // starting index
-            for (int j = i; j < n; j++) { // ending index
-                // add all the elements of
-                // subarray = a[i...j]:
-                long s = 0;
-                for (int K = i; K <= j; K++) {
-                    s += a[K];
+        for (int i = 0; i < n; i++) {
+            //selected element is v[i]:
+            // Checking if v[i] is not already
+            // a part of the answer:
+            if (ls.size() == 0 || ls.get(0) != v[i]) {
+                int cnt = 0;
+                for (int j = 0; j < n; j++) {
+                    // counting the frequency of v[i]
+                    if (v[j] == v[i]) {
+                        cnt++;
+                    }
                 }
 
-                if (s == k)
-                    len = Math.max(len, j - i + 1);
+                // check if frquency is greater than n/3:
+                if (cnt > (n / 3))
+                    ls.add(v[i]);
             }
+
+            if (ls.size() == 2) break;
         }
-        return len;
+
+        return ls;
     }
 
-    public static void main(String[] args) {
-        int[] a = {2, 3, 5, 1, 9};
-        long k = 10;
-        int len = getLongestSubarray(a, k);
-        System.out.println("The length of the longest subarray is: " + len);
+    public static void main(String args[]) {
+        int[] arr = {11, 33, 33, 11, 33, 11};
+        List<Integer> ans = majorityElement(arr);
+        System.out.print("The majority elements are: ");
+        for (int i = 0; i < ans.size(); i++) {
+            System.out.print(ans.get(i) + " ");
+        }
+        System.out.println();
     }
 }
+
 
